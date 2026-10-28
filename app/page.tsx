@@ -86,18 +86,6 @@ const restaurants = [
   },
 ];
 
-const steps = [
-  'Enter your location or postcode',
-  'Browse nearby restaurants and essentials',
-  'Track your delivery in real time',
-];
-
-const stats = [
-  { value: '4.8', label: 'Average local rating' },
-  { value: '20 min', label: 'Average delivery time' },
-  { value: '12K+', label: 'Local deliveries' },
-];
-
 export default function HomePage() {
   return (
     <main className="page-shell">
@@ -114,13 +102,13 @@ export default function HomePage() {
             <Link href="#discover">Discover</Link>
             <Link href="#restaurants">Restaurants</Link>
             <Link href="#how-it-works">How it works</Link>
-            <Link href="#drivers">Drivers</Link>
-            <Link href="#partners">Partners</Link>
+            <Link href="/drivers">Drivers</Link>
+            <Link href="/partners">Partners</Link>
           </nav>
 
           <div className="nav-actions">
-            <button className="secondary-btn">Sign in</button>
-            <button className="primary-btn">Order now</button>
+            <Link href="/drivers" className="secondary-btn">Become driver</Link>
+            <Link href="/partners" className="primary-btn">Partner</Link>
           </div>
         </div>
       </header>
@@ -181,7 +169,11 @@ export default function HomePage() {
 
       <section className="stats-section">
         <div className="container stats-grid">
-          {stats.map((item) => (
+          {[
+            { value: '4.8', label: 'Average local rating' },
+            { value: '20 min', label: 'Average delivery time' },
+            { value: '12K+', label: 'Local deliveries' },
+          ].map((item) => (
             <div className="stat-box" key={item.label}>
               <strong>{item.value}</strong>
               <span>{item.label}</span>
@@ -254,58 +246,17 @@ export default function HomePage() {
           </div>
 
           <div className="steps-grid">
-            {steps.map((step, index) => (
+            {[
+              'Enter your location or postcode',
+              'Browse nearby restaurants and essentials',
+              'Track your delivery in real time',
+            ].map((step, index) => (
               <div className="step-card" key={step}>
                 <span className="step-number">0{index + 1}</span>
                 <h3>{step}</h3>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section alt-section" id="drivers">
-        <div className="container split-wrap">
-          <div>
-            <p className="eyebrow">Local drivers</p>
-            <h2>Become a courier for Mallow</h2>
-            <p className="subhead compact">
-              Join the local delivery network with flexible hours, local routes and reliable pay.
-            </p>
-            <ul className="bullet-list">
-              <li>Earn by delivering food, essentials and parcels</li>
-              <li>Flexible work for bikes, scooters and cars</li>
-              <li>Local delivery zones around Mallow</li>
-            </ul>
-            <button className="primary-btn">Apply as driver</button>
-          </div>
-
-          <div className="driver-box">
-            <div className="driver-card">
-              <span className="driver-figure">🚲</span>
-              <div>
-                <strong>Bicycle courier</strong>
-                <p>Perfect for centre and Shortcastle Street routes</p>
-              </div>
-            </div>
-            <div className="driver-card">
-              <span className="driver-figure">🏍️</span>
-              <div>
-                <strong>Fast delivery</strong>
-                <p>Great for food and urgent local parcel drops</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="partners">
-        <div className="container newsletter-box">
-          <div>
-            <p className="eyebrow">For local businesses</p>
-            <h2>Grow with Mallow Express</h2>
-          </div>
-          <button className="primary-btn">Partner with us</button>
         </div>
       </section>
 
