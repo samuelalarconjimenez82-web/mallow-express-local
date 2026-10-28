@@ -1,8 +1,9 @@
+import type { Metadata } from 'next';
 import './globals.css';
 
-export const metadata = {
-  title: 'Mallow Express | Local delivery in Mallow',
-  description: 'Fast local food delivery and essentials for Mallow, Ireland.',
+export const metadata: Metadata = {
+  title: 'Mallow Express | Fast local delivery in Mallow',
+  description: 'Food delivery, essentials and parcel service for Mallow and the surrounding area.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

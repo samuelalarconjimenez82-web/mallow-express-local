@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const categories = [
   { name: 'Pizza', emoji: '🍕' },
   { name: 'Burgers', emoji: '🍔' },
@@ -5,10 +7,13 @@ const categories = [
   { name: 'Sushi', emoji: '🍣' },
   { name: 'Healthy', emoji: '🥗' },
   { name: 'Coffee', emoji: '☕' },
+  { name: 'Essentials', emoji: '🛒' },
+  { name: 'Parcel', emoji: '📦' },
 ];
 
 const restaurants = [
   {
+    id: 1,
     name: 'Mallow Pizza Hub',
     category: 'Pizza',
     time: '20-30 min',
@@ -17,8 +22,10 @@ const restaurants = [
     image:
       'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80',
     address: 'Shortcastle Street, Mallow',
+    description: 'Fresh pizza, classic toppings and quick delivery around the centre.',
   },
   {
+    id: 2,
     name: 'Shortcastle Grill',
     category: 'Burgers',
     time: '25-35 min',
@@ -27,8 +34,10 @@ const restaurants = [
     image:
       'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80',
     address: 'Town Centre, Mallow',
+    description: 'Premium burgers, loaded fries, and local favourites.',
   },
   {
+    id: 3,
     name: 'Sushi Mallow',
     category: 'Sushi',
     time: '30-40 min',
@@ -37,8 +46,10 @@ const restaurants = [
     image:
       'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80',
     address: 'Mallow Town Centre',
+    description: 'Fresh sushi, rice bowls and healthy choices delivered fast.',
   },
   {
+    id: 4,
     name: 'Coffee Corner',
     category: 'Coffee',
     time: '15-20 min',
@@ -47,13 +58,44 @@ const restaurants = [
     image:
       'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
     address: 'Main Street, Mallow',
+    description: 'Coffee, breakfast and light bites for the whole day.',
+  },
+  {
+    id: 5,
+    name: 'Green Bowl',
+    category: 'Healthy',
+    time: '20-30 min',
+    rating: 4.8,
+    price: '€€',
+    image:
+      'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
+    address: 'Mallow West',
+    description: 'Salads, wraps and fresh plates for a lighter approach to food.',
+  },
+  {
+    id: 6,
+    name: 'Parcel Mallow',
+    category: 'Parcel',
+    time: '30-60 min',
+    rating: 4.7,
+    price: '€€',
+    image:
+      'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80',
+    address: 'Delivery zones across Mallow',
+    description: 'Fast local parcel, document and essential delivery support.',
   },
 ];
 
 const steps = [
-  'Search by location or category',
-  'Choose a local restaurant',
-  'Track your order in real time',
+  'Enter your location or postcode',
+  'Browse nearby restaurants and essentials',
+  'Track your delivery in real time',
+];
+
+const stats = [
+  { value: '4.8', label: 'Average local rating' },
+  { value: '20 min', label: 'Average delivery time' },
+  { value: '12K+', label: 'Local deliveries' },
 ];
 
 export default function HomePage() {
@@ -61,18 +103,19 @@ export default function HomePage() {
     <main className="page-shell">
       <header className="topbar">
         <div className="container nav">
-          <div className="brand-wrap">
+          <Link href="/" className="brand-wrap" aria-label="Mallow Express home">
             <div className="brand-mark">M</div>
             <div>
               <p className="brand-name">Mallow Express</p>
             </div>
-          </div>
+          </Link>
 
-          <nav className="nav-links">
-            <a href="#discover">Discover</a>
-            <a href="#partners">Partners</a>
-            <a href="#how-it-works">How it works</a>
-            <a href="#drivers">Drivers</a>
+          <nav className="nav-links" aria-label="Main navigation">
+            <Link href="#discover">Discover</Link>
+            <Link href="#restaurants">Restaurants</Link>
+            <Link href="#how-it-works">How it works</Link>
+            <Link href="#drivers">Drivers</Link>
+            <Link href="#partners">Partners</Link>
           </nav>
 
           <div className="nav-actions">
@@ -86,10 +129,10 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Fast local delivery in Mallow</p>
-            <h1>Food, essentials and parcels delivered in minutes.</h1>
+            <h1>Food, essentials and parcel delivery made local.</h1>
             <p className="subhead">
-              From Shortcastle Street to Mallow town centre, discover the best local food and
-              delivery experiences for your neighbourhood.
+              Mallow Express brings the best local restaurants, essentials and delivery support to
+              Shortcastle Street and the wider Mallow area.
             </p>
 
             <div className="search-box">
@@ -99,7 +142,7 @@ export default function HomePage() {
 
             <div className="hero-badges">
               <span>🚚 20 min avg delivery</span>
-              <span>⭐ 4.8 local rating</span>
+              <span>⭐ 4.8 customer rating</span>
             </div>
           </div>
 
@@ -136,11 +179,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="stats-section">
+        <div className="container stats-grid">
+          {stats.map((item) => (
+            <div className="stat-box" key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="section" id="discover">
         <div className="container">
           <div className="section-head">
             <h2>Popular categories</h2>
-            <a href="#">View all</a>
+            <Link href="#">View all</Link>
           </div>
 
           <div className="categories-grid">
@@ -154,16 +208,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section alt-section">
+      <section className="section alt-section" id="restaurants">
         <div className="container">
           <div className="section-head">
             <h2>Restaurants near you</h2>
-            <a href="#">Explore</a>
+            <Link href="#">Explore</Link>
           </div>
 
           <div className="restaurant-grid">
             {restaurants.map((restaurant) => (
-              <article className="restaurant-card" key={restaurant.name}>
+              <article className="restaurant-card" key={restaurant.id}>
                 <img src={restaurant.image} alt={restaurant.name} />
                 <div className="restaurant-body">
                   <div className="restaurant-row">
@@ -176,12 +230,16 @@ export default function HomePage() {
                     <span>{restaurant.price}</span>
                   </div>
 
+                  <p className="restaurant-description">{restaurant.description}</p>
+
                   <div className="restaurant-meta">
                     <p>{restaurant.address}</p>
                     <p>{restaurant.time}</p>
                   </div>
 
-                  <button className="primary-btn small">Order</button>
+                  <Link href={`/restaurant/${restaurant.id}`} className="primary-btn small order-btn">
+                    Order
+                  </Link>
                 </div>
               </article>
             ))}
@@ -258,9 +316,9 @@ export default function HomePage() {
             <p>Fast local delivery for Mallow.</p>
           </div>
           <div className="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Support</a>
+            <Link href="#">Privacy</Link>
+            <Link href="#">Terms</Link>
+            <Link href="#">Support</Link>
           </div>
         </div>
       </footer>

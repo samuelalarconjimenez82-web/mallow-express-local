@@ -84,7 +84,8 @@ img {
 .restaurant-row,
 .mini-card-top,
 .section-head,
-.footer-wrap {
+.footer-wrap,
+.stats-grid {
   display: flex;
   align-items: center;
 }
@@ -109,6 +110,9 @@ img {
   padding: 0.9rem 1.5rem;
   font-weight: 700;
   transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary-btn {
@@ -290,6 +294,38 @@ img {
   box-shadow: 0 0 0 12px rgba(29, 216, 190, 0.15);
 }
 
+.stats-section {
+  padding: 12px 0 0;
+}
+
+.stats-grid {
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 180px;
+  background: white;
+  border: 1px solid rgba(18, 33, 39, 0.08);
+  border-radius: 24px;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 12px 24px rgba(18, 33, 39, 0.03);
+}
+
+.stat-box strong {
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+}
+
+.stat-box span {
+  color: #586872;
+}
+
 .section {
   padding: 72px 0;
 }
@@ -328,7 +364,7 @@ img {
 }
 
 .categories-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .category-card {
@@ -352,7 +388,7 @@ img {
 }
 
 .restaurant-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .restaurant-card {
@@ -360,6 +396,7 @@ img {
   border: 1px solid rgba(18, 33, 39, 0.08);
   border-radius: 28px;
   overflow: hidden;
+  box-shadow: 0 12px 24px rgba(18, 33, 39, 0.03);
 }
 
 .restaurant-card img {
@@ -405,6 +442,12 @@ img {
   color: #3e4d55;
 }
 
+.restaurant-description {
+  margin: 16px 0 0;
+  color: #52636d;
+  line-height: 1.6;
+}
+
 .restaurant-meta {
   justify-content: space-between;
   gap: 12px;
@@ -413,7 +456,7 @@ img {
   font-size: 0.9rem;
 }
 
-.restaurant-body .primary-btn {
+.order-btn {
   margin-top: 18px;
 }
 
@@ -564,7 +607,8 @@ img {
 
   .restaurant-meta,
   .section-head,
-  .footer-wrap {
+  .footer-wrap,
+  .stats-grid {
     flex-direction: column;
     align-items: flex-start;
   }
